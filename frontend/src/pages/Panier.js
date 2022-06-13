@@ -100,13 +100,12 @@ const Panier = () => {
 							<li id="liste" data-id={x.id} data-color={x.couleur} key={index}>
 								<div className="cart-image">
 									<img src={x.image} alt={x.nom} title={x.nom}></img>
+									<Link to={`/product/` + x.id}>
+										<h6 className="cart-name-name">Retour sur le détail</h6>
+									</Link>
 								</div>
 								<div className="cart-name">
-									<div>
-										<Link className="cart-name-name" to={`/product/` + x.id}>
-											{x.nom}
-										</Link>
-									</div>
+									<div className="carte-name-name-bis">{x.nom}</div>
 									<br />
 									<div>{x.couleur}</div>
 									<br />
@@ -131,7 +130,7 @@ const Panier = () => {
 									</button>
 								</div>
 
-								<div className="cart-price">{x.prix} €</div>
+								<div className="cart-price">{x.prix * x.quantiter} €</div>
 							</li>
 						))
 					)}

@@ -16,6 +16,7 @@ import ValidationAchats from "./pages/ValidationAchats";
 
 const App = () => {
 	const [isActive, setisActive] = useState("");
+
 	const open = () => {
 		if (isActive === "open") {
 			setisActive("");

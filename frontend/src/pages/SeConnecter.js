@@ -16,13 +16,17 @@ const SeConnecter = props => {
 				password,
 			});
 			console.log(response.data);
-			axios.defaults.headers.common.Authorization = response.data.token;
+			if (response.data.errors) {
+				// console.log("erreur");
+			} else {
+				axios.defaults.headers.common.Authorization = response.data.token;
 
-			// localStorage.setItem("id", JSON.stringify(response.data.user.id));
-			localStorage.setItem("bearer", response.data.token);
-			// localStorage.setItem("nom", JSON.stringify(response.data.user.nom));
+				// localStorage.setItem("id", JSON.stringify(response.data.user.id));
+				localStorage.setItem("bearer", response.data.token);
+				localStorage.setItem("nom", JSON.stringify(response.data.nom));
 
-			navigate("/shippingScreen", { replace: true });
+				navigate("/", { replace: true });
+			}
 		} catch (err) {
 			alert("E-mail ou mot de passe incorrect");
 			window.location.reload();

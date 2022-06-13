@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Components
+import Rating from "./Rating";
+import Loading from "./Loading";
+
 const ProductItem = ({ product }) => {
-	// const quantiter = document.getElementById("quantity");
-	const [rangeValue, setRangeValue] = useState("");
+	// const [rangeValue, setRangeValue] = useState("");
 	const [couleur, setCouleur] = useState("");
 	const [stock, setStock] = useState("");
 
@@ -35,7 +38,18 @@ const ProductItem = ({ product }) => {
 				const filtre = array.filter(
 					x => x.nom === nom && x.couleur === couleur,
 				);
-
+				if (
+					filtre &&
+					filtre.length &&
+					filtre[0].quantiter + parseInt(stock) > max
+				) {
+					let sousTotalQuantite = max - filtre[0].quantiter;
+					alert(
+						`******************** STOCK EPUISER ********************\nIl ne reste plus que ${sousTotalQuantite} ${nom} de couleur ${couleur}.`,
+					);
+					window.location.reload();
+					return;
+				}
 				if (filtre && filtre.length) {
 					filtre[0].quantiter += parseInt(stock);
 				} else {
@@ -69,7 +83,7 @@ const ProductItem = ({ product }) => {
 		<div>
 			{product && product.length ? (
 				product.map((product, index) => (
-					<ul className="details" key={index} yoyo={product}>
+					<ul className="details" key={index}>
 						<div className="details-image">
 							<img
 								src={product.image}
@@ -87,6 +101,11 @@ const ProductItem = ({ product }) => {
 									Description:
 									<div>{product.description}</div>
 								</li>
+								<Rating
+									rating={product.rating}
+									numReviews={product.numReviews}
+								></Rating>
+								<br />
 								<Link to={`/imageAgrandi/` + product._id}>
 									<button className="agrandirItem">Agrandir image</button>
 								</Link>
@@ -162,7 +181,7 @@ const ProductItem = ({ product }) => {
 					</ul>
 				))
 			) : (
-				<h2>Chargement ....</h2>
+				<Loading></Loading>
 			)}
 		</div>
 	);

@@ -52,22 +52,26 @@
         
         .cart-image {
                 flex: 1 1;
-        }
-        
-        .cart-name {
-                flex: 8 1;
 
                 .cart-name-name {
                         color: $color-1;
                         font-weight: bold;
-
-                        &:hover::after {
-                                content: " Retour sur le détail";
+        
+                        &:hover {
                                 color: $color-3;
-                                font-size: 1rem;
                         }
                 }
         }
+        
+        .cart-name {
+              flex: 8 1;
+
+              .carte-name-name-bis {
+                    color: rgb(118, 45, 45);
+                    font-weight: bold;
+                  }
+        }
+
 
         .cart-price {
                 // flex: 1 1;

@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Components
+import Rating from "./Rating";
+import Loading from "./Loading";
+
 const ProductsItem = ({ products }) => {
 	return (
 		<div>
@@ -16,13 +20,13 @@ const ProductsItem = ({ products }) => {
 								<div className="product-brand">{x.marque}</div>
 								<div className="product-price">€ {x.prix}</div>
 								<div className="product-rating">
-									{x.rating} Star(s) ({x.numReviews} reviews)
+									<Rating rating={x.rating} numReviews={x.numReviews}></Rating>
 								</div>
 							</div>
 						</li>
 					))
 				) : (
-					<h2>Chargement ....</h2>
+					<Loading></Loading>
 				)}
 			</ul>
 		</div>

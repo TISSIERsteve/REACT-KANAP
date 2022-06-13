@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ProductsItem from "../components/ProductsItem";
 const { REACT_APP_API_URL } = process.env;
 
-const Products = () => {
+const Products = utilisateur => {
 	const [products, setProducts] = useState("");
 	const navigate = useNavigate();
 
@@ -12,7 +12,6 @@ const Products = () => {
 		axios
 			.get(`${REACT_APP_API_URL}api/products/`)
 			.then(res => {
-				// console.log(res.data);
 				setProducts(res.data);
 			})
 			.catch(err => {
