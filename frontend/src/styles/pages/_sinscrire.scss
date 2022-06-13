@@ -1,0 +1,76 @@
+// Page connexion
+.form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        .form-container {
+                display: flex;
+                flex-direction: column;
+                width: 50rem;
+                padding: 2rem;
+                border: 0.1rem solid $color-4;
+                border-radius: 0.5rem;
+                list-style-type: none;
+        }
+
+        .form-container li {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+        }
+
+        input {
+                padding: 1rem;
+                border-radius: 0.5rem;
+                border: 0.1rem solid $color-4;
+                margin-bottom: 0.5rem;
+        }
+
+        .password {
+                position: relative;
+        }
+
+        .eyes {
+                position: absolute;
+                top: 3rem;
+                right: 1rem;
+                border-radius: 50%;
+                font-size: 0.7rem;
+        }
+
+        .button.primary {
+                background-color: $color-9;
+                margin-bottom: 0.2rem;
+                padding: 0.8rem;
+                border-radius: 0.5rem;
+                border: none;
+                font-size: 1.5rem;
+
+                &:hover {
+                        color: $color-2;
+                        font-weight: bold;
+                        background-color: $color-3;
+                        transform: scale(1.02);
+                }
+        }
+
+        .button.secondary {
+                background-color: $color-4;
+                margin-bottom: 0.2rem;
+                padding: 0.8rem;
+                border-radius: 0.5rem;
+                text-align: center;
+                font-size: 1.5rem;
+
+
+                &:hover {
+                        color: $color-2;
+                        font-weight: bold;
+                        background-color: $color-3;
+                        transform: scale(1.02);
+                }
+        }
+}

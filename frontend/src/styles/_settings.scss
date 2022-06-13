@@ -1,0 +1,91 @@
+// App
+
+// Font
+$color-1: #203040;
+$color-2: #ffffff;
+$color-3: #ff8000;
+$color-4: #c0c0c0;
+$color-5: #808080;
+$color-6: #ff0000;
+$color-7: #ade9f7;
+$color-8: #e7e7e7;
+$color-9: #f0c040;
+
+* {
+        margin: 0;
+        // padding: 0;
+        box-sizing: border-box;
+
+}
+
+html {
+        font-size: 62.5%;
+}
+
+body {
+        font-size: 1.6rem;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+}
+
+.grid-container {
+        display: grid;
+        grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 5rem 1fr 5rem;
+        height: 100vh;
+}
+
+.header {
+        grid-area: header;
+        background-color: $color-1;
+        color: $color-2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+
+        .brand {
+               display: flex;
+               width: 20rem;
+               justify-content: space-around;
+               align-items: center;
+        }
+
+        button:hover {
+                background-color: $color-3;
+                transform: scale(1.2);
+        }
+
+        a {
+                color: $color-2;
+                font-size: 2rem;
+                font-weight: bold;
+                text-decoration: none;
+                margin-right: 2rem;
+                
+                &:hover {
+                        color: $color-3;
+                }
+        }
+
+        .header-links  a{
+                text-decoration: none;
+        }
+}
+
+// .main {
+//         grid-area: main;
+// }
+
+.footer {
+        grid-area: footer;
+        background-color: $color-1;
+        color: $color-2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}

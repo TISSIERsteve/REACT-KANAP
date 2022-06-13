@@ -1,0 +1,35 @@
+// Image agrandi
+.container-image-agrandi {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(216, 216, 247);
+        
+        .titre-image-agrandi {
+                text-align: center;
+        }
+
+        .details-image-agrandi {
+                width: 60rem;
+                margin: 0 auto;
+                object-fit: cover;
+        }
+
+        .details-image-agrandi img {
+                width: 100%;
+                border: 0.5rem solid black;
+                border-radius: 1.5rem;
+        }
+
+        .button-image-agrandi {
+                border-radius: 50%;
+                height: 2rem;
+                width: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding:1.5rem;
+                margin-bottom: 1rem;
+        }
+}

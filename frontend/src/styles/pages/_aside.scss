@@ -1,0 +1,52 @@
+// Aside
+        .aside.close {
+                position: fixed;
+                transform: translateX(-30rem);
+                width: 25rem;
+                margin-top: 5rem;
+                transition: 2s ease;
+                height: 80%;
+        }
+        
+        .aside.open {
+                transition: 1.5s ease;
+                transform: translateX(0rem);
+                z-index: 5000;
+                box-shadow: 0.8rem 0rem 0.8rem $color-2;
+                background: linear-gradient(70deg, rgb(121, 255, 222), rgb(86, 220, 178));
+                border: 1rem ridge rgba(66, 63, 63, 0.993);
+        }
+
+        .modal {
+                margin-top: 1rem;
+                width: 100%;
+
+                h3 {
+                        margin-bottom: 1rem;
+                        text-align: center;
+                }
+
+                ul {
+                        display: flex;
+                        justify-content: flex-start;
+                        
+                }
+                
+                li {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+              }
+
+                a {
+                        margin-bottom: 1rem;
+                        color: black;
+                        font-weight: bold;
+                }
+        }
+      
+      
+  
+      
+
+      

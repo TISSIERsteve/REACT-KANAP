@@ -1,0 +1,19 @@
+// Validation Achats
+.checkout-steps {
+        display: flex;
+        justify-content: space-between;
+        width: 60rem;
+        margin: 0 auto;
+}
+
+.checkout-steps > div {
+        border-top: 0.3rem #c0c0c0 solid;
+        color: #c0c0c0;
+        flex: 1 1;
+        margin-top: 1rem;
+        text-align: center;
+}
+.checkout-steps > div.active{
+        border-top: 0.3rem #f08000 solid;
+        color: #f08000;
+}
