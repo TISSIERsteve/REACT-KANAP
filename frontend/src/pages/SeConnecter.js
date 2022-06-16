@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 
-const SeConnecter = props => {
+const SeConnecter = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState();
@@ -15,17 +15,17 @@ const SeConnecter = props => {
 				email,
 				password,
 			});
-			console.log(response.data);
+
 			if (response.data.errors) {
-				// console.log("erreur");
+				console.log("erreur");
 			} else {
 				axios.defaults.headers.common.Authorization = response.data.token;
 
 				// localStorage.setItem("id", JSON.stringify(response.data.user.id));
 				localStorage.setItem("bearer", response.data.token);
-				localStorage.setItem("nom", JSON.stringify(response.data.nom));
-
+				localStorage.setItem("nom", response.data.nom);
 				navigate("/", { replace: true });
+				window.location.reload();
 			}
 		} catch (err) {
 			alert("E-mail ou mot de passe incorrect");

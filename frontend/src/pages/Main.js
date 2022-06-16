@@ -1,12 +1,12 @@
-import React from "react";
-import Products from "../pages/Products";
+// import React from "react";
+// import Products from "../pages/Products";
 
-const Main = () => {
-	return (
-		<main className="main">
-			<Products></Products>
-		</main>
-	);
-};
+// const Main = ({ products }) => {
+// 	return (
+// 		<main className="main">
+// 			<Products></Products>
+// 		</main>
+// 	);
+// };
 
-export default Main;
+// export default Main;

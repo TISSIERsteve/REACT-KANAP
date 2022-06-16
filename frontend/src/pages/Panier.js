@@ -3,16 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 const Panier = () => {
-	let array = [];
-	if (localStorage.length === 0) {
-		localStorage.setItem("achats", JSON.stringify(array));
-	}
+	// let array = [];
+	// if (localStorage.length === 0) {
+	// 	localStorage.setItem("achats", JSON.stringify(array));
+	// }
 	const PanierResult = JSON.parse(localStorage.achats);
 	const changeQuantiter = document.querySelectorAll(".itemQuantity");
-
 	const { id } = useParams;
-	// data.products.find(x => x._id === id);
-
 	const [quantiter, setquantiterArticle] = useState("");
 	const [achats, setAchats] = useState("");
 	const navigate = useNavigate();
@@ -77,7 +74,7 @@ const Panier = () => {
 				navigate("/validationAchats", { replace: true });
 			}
 		} else {
-			alert("Vous devez être inscrit pour valider votre commande");
+			alert("Vous devez être connecter pour valider votre commande");
 			navigate("/connexion", { replace: true });
 		}
 	};

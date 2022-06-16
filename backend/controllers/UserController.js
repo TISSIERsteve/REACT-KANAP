@@ -24,6 +24,7 @@ exports.signup = (req, res) => {
 // Connexion
 exports.login = (req, res) => {
 	// Je récupère l'user qui corespond à la base de donnée
+
 	User.findOne({
 		email: req.body.email,
 	}).then(user => {
@@ -43,7 +44,7 @@ exports.login = (req, res) => {
 					nom: user.name,
 					email: user.email,
 					token: jwt.sign({ userId: user._id }, `${process.env.JWT_SECRET}`, {
-						expiresIn: "24h",
+						expiresIn: "1h",
 					}),
 				});
 			})

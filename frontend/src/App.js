@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 // Components
-import Main from "./pages/Main";
+// import Main from "./pages/Main";
 import Panier from "./pages/Panier";
 import Aside from "./pages/Aside";
 import Product from "./pages/Product";
@@ -13,9 +14,31 @@ import Sinscrire from "./pages/Sinscrire";
 import PasserCommande from "./pages/PasserCommande";
 import Paiement from "./pages/Paiement";
 import ValidationAchats from "./pages/ValidationAchats";
+import Products from "./pages/Products";
+import HeadersAuth from "./components/HeadersAuth";
+
+const { REACT_APP_API_URL } = process.env;
 
 const App = () => {
+	const [products, setProducts] = useState(null);
 	const [isActive, setisActive] = useState("");
+
+	useEffect(() => {
+		axios
+			.get(`${REACT_APP_API_URL}api/products/`)
+			.then(res => {
+				setProducts(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+				if (err.response === "jwt expired") {
+					alert("Votre session est expiré veuillez vous reconnecter");
+					localStorage.clear();
+
+					<Navigate to="/connexion"></Navigate>;
+				}
+			});
+	}, []);
 
 	const open = () => {
 		if (isActive === "open") {
@@ -36,10 +59,7 @@ const App = () => {
 
 						<Link to="/">KANAP</Link>
 					</div>
-					<div className="header-links">
-						<Link to="/panier">Panier</Link>
-						<Link to="/connexion">Se connecter</Link>
-					</div>
+					<HeadersAuth></HeadersAuth>
 				</header>
 
 				<aside className={`aside close ${isActive}`}>
@@ -47,7 +67,10 @@ const App = () => {
 				</aside>
 
 				<Routes>
-					<Route path="/" element={<Main></Main>}></Route>
+					<Route
+						path="/"
+						element={<Products products={products}></Products>}
+					></Route>
 					<Route path="/panier" element={<Panier></Panier>}></Route>
 					<Route path="/product/:id" element={<Product></Product>}></Route>
 					<Route
@@ -68,7 +91,7 @@ const App = () => {
 						path="/passerCommande"
 						element={<PasserCommande></PasserCommande>}
 					></Route>
-					<Route path="*" element={<Main />} />
+					<Route path="*" element={<Products />} />
 				</Routes>
 
 				<footer className="footer">

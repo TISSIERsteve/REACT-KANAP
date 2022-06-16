@@ -55,6 +55,19 @@ body {
                align-items: center;
         }
 
+        .header-addItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 12rem;
+
+        button {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 50%;
+        }
+        }
+
         button:hover {
                 background-color: $color-3;
                 transform: scale(1.2);
@@ -76,10 +89,6 @@ body {
                 text-decoration: none;
         }
 }
-
-// .main {
-//         grid-area: main;
-// }
 
 .footer {
         grid-area: footer;
