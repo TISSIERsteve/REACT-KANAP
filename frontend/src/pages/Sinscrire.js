@@ -70,12 +70,13 @@ const Sinscrire = props => {
 					}
 				})
 				.catch(err => {
-					console.log(err.response);
-					if (err.response.data.error.keyValue.name === nom) {
+					try {
+						if (err.response.data.error.errors.name.value === nom);
 						alert("Ce nom est déjà utiliser");
-					}
-					if (err.response.data.error.errors.email.kind === "unique") {
-						alert("Cette adresse email est déjà utilisée");
+					} catch {
+						if (err.response.data.error.errors.email.value === email) {
+							alert("Cette adresse email est déjà utiliser");
+						}
 					}
 				});
 		} else {
