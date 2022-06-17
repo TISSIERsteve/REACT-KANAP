@@ -1,4 +1,4 @@
-function Dialog({ message, onDialog, nameProduct }) {
+function ModalDeconnect({  onDialog, message }) {
 	return (
 	  <div
 	    style={{
@@ -25,11 +25,9 @@ function Dialog({ message, onDialog, nameProduct }) {
 		  background: "white",
 		  padding: "50px",
 		  borderRadius: "10px",
-		  border: "5px double black", 
 		}}
 	    >
-		<h3 stlye={{ color: "#111", fontSize: "16px"}}>{message}</h3>
-		<h1 style={{ color: "blue", fontSize: "24px", marginBottom: "2rem" }}>{nameProduct}</h1>
+		<h1 style={{ color: "black", fontSize: "24px", marginBottom: "2rem", textAlign: "center", width: "35rem"}}>{message}</h1>
 		<div style={{ display: "flex", alignItems: "center" }}>
 		  <button
 		    onClick={() => onDialog(true)}
@@ -68,5 +66,5 @@ function Dialog({ message, onDialog, nameProduct }) {
 	  </div>
 	);
     }
-    export default Dialog;
+    export default ModalDeconnect;
     

@@ -17,7 +17,6 @@ const SeConnecter = () => {
 			});
 
 			if (response.data.errors) {
-				console.log("erreur");
 			} else {
 				axios.defaults.headers.common.Authorization = response.data.token;
 

@@ -4,9 +4,10 @@
         flex-wrap: wrap;
         padding: 1rem;
         justify-content: space-between;
+
         .placeorder-info {
                 flex: 3 1 60rem;
-      }
+        }
 
       .placeorder-action {
               flex: 1 1 20rem;
@@ -14,6 +15,22 @@
               border-radius: 0.5rem;
               background-color: #fcfcfc;
               padding: 1rem;
+        }
+
+        .placeorder-action ul div {
+                display: flex;
+                justify-content: space-evenly;
+        }
+
+        .placeorder-action ul button 
+        // .placeorder-action ul button 
+        {
+                color: black;
+                border-radius: 0.5rem;
+                border: 0.1rem solid #c0c0c0;
+                padding: 0.5rem;
+                margin-right: 0.2rem;
+                width: 12.7rem;
         }
 
         .placeorder-info > div {
@@ -24,8 +41,18 @@
                 margin: 1rem;
         }
 
-        .placeorder-info > div:first-child {
-                margin-top: 0;
+        .placeorder-info > div h3 {
+                font-style: italic;
+                text-decoration: underline;
+        }
+
+        .placeorder-info > div:nth-child(2)  div {
+                margin-top: 0.5rem;
+        }
+
+        .paiement-methode {
+                font-weight: bold;
+                font-size: 1.8rem;
         }
 
         .placeorder-action > ul {
@@ -44,9 +71,41 @@
                 font-weight: bold;
                 color: #c04000;
         }
+
+        .cart-list-container article {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                border-bottom: 0.2rem $color-4 double;
+        }
+
+        .cart-list-container li {
+                list-style-type: none;
+        }
         
-        .placeorder-actions-payment > div {
-                width: 100%;
+        .cart-list-container article img {
+                max-width: 10rem;
+                max-height: 10rem;
+        }
+        
+        .cart-name {
+                display: flex;
+                flex-direction: column;
+                height: 7rem;
+                width: 12rem;
+                justify-content: space-between;
+        }
+
+        .cart-name > p:first-child  {
+                font-weight: bold;
+        }
+
+        .cart-price {
+                display: flex;
+                align-items: center;
+                font-size: 2.5rem;
+                text-align: right;
         }
 }
         

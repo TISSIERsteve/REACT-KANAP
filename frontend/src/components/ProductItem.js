@@ -4,18 +4,40 @@ import { Link } from "react-router-dom";
 // Components
 import Rating from "./Rating";
 import Loading from "./Loading";
+import ModalConfirmationProductItem from "../modal/ModalConfirmationProductItem";
 
 const ProductItem = ({ product }) => {
 	// const [rangeValue, setRangeValue] = useState("");
 	const [couleur, setCouleur] = useState("");
 	const [stock, setStock] = useState("");
 
+	// Confirmation
+	const [dialog, setDialog] = useState({
+		isLoading: false,
+		message: "",
+	});
+
+	const handleDialog = (isLoading, message) => {
+		setDialog({
+			isLoading,
+			message,
+		});
+	};
+
+	const confirm = choisir => {
+		if (choisir) {
+			handleDialog("", true);
+		} else {
+			handleDialog("", false);
+		}
+	};
+
 	const addStorage = (id, nom, image, prix, max) => {
-		if (stock <= 0) {
-			alert("Veuillez indiquer une quantité");
+		if (couleur === "") {
+			handleDialog(true, "Veuillez indiquer une couleur");
 			return;
-		} else if (couleur === "") {
-			alert("Veuillez indiquer une couleur");
+		} else if (stock <= 0) {
+			handleDialog(true, "Veuillez indiquer une quantité");
 			return;
 		} else {
 			const details = {
@@ -44,10 +66,10 @@ const ProductItem = ({ product }) => {
 					filtre[0].quantiter + parseInt(stock) > max
 				) {
 					let sousTotalQuantite = max - filtre[0].quantiter;
-					alert(
-						`******************** STOCK EPUISER ********************\nIl ne reste plus que ${sousTotalQuantite} ${nom} de couleur ${couleur}.`,
+					handleDialog(
+						true,
+						`STOCK EPUISER Il ne reste plus que ${sousTotalQuantite} ${nom} de couleur ${couleur}.`,
 					);
-					window.location.reload();
 					return;
 				}
 				if (filtre && filtre.length) {
@@ -57,19 +79,20 @@ const ProductItem = ({ product }) => {
 				}
 
 				localStorage.setItem("achats", JSON.stringify(array));
-				alert(
+				handleDialog(
+					true,
 					`Vous venez d'ajouter ${stock} ${nom} de couleur ${couleur} dans votre panier`,
 				);
-				window.location.reload();
 				return;
 			} else {
 				// S' il y a rien dans le localStorage
 				array.push(details);
 				localStorage.setItem("achats", JSON.stringify(array));
-				alert(
+				handleDialog(
+					true,
 					`Pour votre premier achat vous venez d'ajouter ${stock} ${nom} de couleur ${couleur} dans votre panier`,
 				);
-				window.location.reload();
+
 				return;
 			}
 		}
@@ -182,6 +205,12 @@ const ProductItem = ({ product }) => {
 				))
 			) : (
 				<Loading></Loading>
+			)}
+			{dialog.isLoading && (
+				<ModalConfirmationProductItem
+					message={dialog.message}
+					onDialog={confirm}
+				/>
 			)}
 		</div>
 	);

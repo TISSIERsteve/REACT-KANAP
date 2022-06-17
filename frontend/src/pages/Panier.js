@@ -3,13 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 const Panier = () => {
-	// let array = [];
-	// if (localStorage.length === 0) {
-	// 	localStorage.setItem("achats", JSON.stringify(array));
-	// }
 	const PanierResult = JSON.parse(localStorage.achats);
 	const changeQuantiter = document.querySelectorAll(".itemQuantity");
-	const { id } = useParams;
+	// const { id } = useParams;
 	const [quantiter, setquantiterArticle] = useState("");
 	const [achats, setAchats] = useState("");
 	const navigate = useNavigate();
@@ -69,9 +65,16 @@ const Panier = () => {
 		if (achats.length <= 0) {
 			alert("Votre panier est vide");
 			navigate("/", { replace: true });
-		} else if (localStorage.bearer) {
-			if (window.confirm(`Voulez vous poursuivre à la validation`)) {
+		} else if (localStorage.bearer || localStorage.expedition) {
+			if (localStorage.bearer) {
+				// if (window.confirm(`Voulez poursuivre jusqu'à l'expédition`))
 				navigate("/validationAchats", { replace: true });
+			}
+			if (localStorage.expedition && localStorage.bearer) {
+				navigate("/paiement", { replace: true });
+			}
+			if (localStorage.ModePaiement) {
+				navigate("/passerCommande", { replace: true });
 			}
 		} else {
 			alert("Vous devez être connecter pour valider votre commande");

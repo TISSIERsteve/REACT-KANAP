@@ -4,6 +4,8 @@ import Etape from "../components/Etape";
 
 const PasserCommande = () => {
 	const [finalAchat, setFinalAchat] = useState("");
+	const passerCommande = JSON.parse(localStorage.achats);
+	const expedition = JSON.parse(localStorage.expedition);
 
 	useEffect(() => {
 		let totalAchatsFinal = 0;
@@ -22,63 +24,76 @@ const PasserCommande = () => {
 		return (
 			<div>
 				<Etape step1 step2 step3 step4></Etape>
+				<div className="retour-accueil">
+					<Link to="/">Retour accueil</Link>
+				</div>
 				<div className="placeorder">
 					<div className="placeorder-info">
 						<div>
 							<h3>Expédition</h3>
-							<div></div>
+							<button>
+								<Link to="/validationAchats">Modifier Adresse</Link>
+							</button>
+							{expedition.map((x, index) => (
+								<ul key={index}>
+									<ol>
+										<ul>{x.adresse}</ul>
+										<ul>{x.codePostale}</ul>
+										<ul>{x.ville}</ul>
+									</ol>
+								</ul>
+							))}
 						</div>
+
 						<div>
 							<h3>Paiement</h3>
 							<div>
-								Paiement Methode: {JSON.parse(localStorage.ModePaiement)}
+								Paiement Methode:{" "}
+								<span className="paiement-methode">
+									{JSON.parse(localStorage.ModePaiement)}
+								</span>
 							</div>
+							<button>
+								<Link to="/paiement">Modifier Paiement</Link>
+							</button>
 						</div>
 						<div>
-							<ul className="cart-list-container">
-								<li>
-									<h3>Panier</h3>
-									<div>Prix : €</div>
-								</li>
-
-								<li>
-									<div className="cart-image">
-										<img src="#" alt="product" />
-									</div>
-									<div className="cart-name">
-										<div>
-											<Link to="#">nom</Link>
-										</div>
-										<div>Qty: quantite</div>
-									</div>
-									<div className="cart-price">€</div>
-								</li>
-							</ul>
+							<h3>Transport</h3>
+							<div></div>
+							<button></button>
+						</div>
+						<div>
+							<h3>Panier</h3>
+							<br />
+							<hr />
+							<br />
+							{passerCommande.map((x, index) => (
+								<ul className="cart-list-container" key={index}>
+									<article>
+										<picture className="cart-image">
+											<img src={x.image} alt={x.nom} title={x.nom} />
+										</picture>
+										<figcaption>
+											<div className="cart-name">
+												<p>{x.nom}</p>
+												<p>Qty: {x.quantiter}</p>
+												<p>Prix : {x.prix} €</p>
+											</div>
+										</figcaption>
+									</article>
+								</ul>
+							))}
 						</div>
 					</div>
 					<div className="placeorder-action">
 						<ul>
-							<li>
-								<button
-									className="button primary full-width"
-									onClick={placeOrderHandler}
-								>
-									Passer Commande
-								</button>
-							</li>
+							<li> </li>
 							<li>
 								<h3>Récapitulatif de la commande</h3>
 							</li>
+
 							<li>
-								<div>Elements</div>
-								<div> </div>
-							</li>
-							<li>
-								<div>Expédition</div>
-								<div></div>
-							</li>
-							<li>
-								<div>Taxe</div>
+								<div>Frais Transport</div>
 								<div></div>
 							</li>
 							<li>
@@ -86,6 +101,9 @@ const PasserCommande = () => {
 								<div>{finalAchat} €</div>
 							</li>
 						</ul>
+						<div>
+							<button onClick={placeOrderHandler}>Passer Commande</button>
+						</div>
 					</div>
 				</div>
 			</div>

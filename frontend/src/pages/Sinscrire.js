@@ -84,11 +84,6 @@ const Sinscrire = props => {
 		}
 	};
 
-	// Function refresh
-	const handleRefresh = () => {
-		window.location.reload();
-	};
-
 	return (
 		<div className="form">
 			<form onSubmit={handleSubmit}>
@@ -194,9 +189,6 @@ const Sinscrire = props => {
 					<div>
 						<button type="submit">Valider</button>
 						<button type="reset">Annuler</button>
-						{/* <button type="button" onClick={handleRefresh}>
-							Annuler
-						</button> */}
 					</div>
 					<Link to="/connexion">
 						<li>Déjà client ?</li>

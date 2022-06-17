@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Dialog from "../modal/Dialog";
+import { Link, useNavigate, UseNavigate } from "react-router-dom";
+import ModalDeconnect from "../modal/ModalDeconnect";
 
 const HeadersAuth = () => {
-	const navigate = useNavigate();
 	const [utilisateur, setUtilisateur] = useState(localStorage.nom);
+	const navigate = useNavigate();
 
 	// Pour le panier localeStorage
 	if (localStorage.length === 0) {
@@ -21,38 +21,39 @@ const HeadersAuth = () => {
 		}
 	}
 
-	// Deconnexion
+	// PARTIE DECONNEXION
 	const [dialog, setDialog] = useState({
-		message: "",
 		isLoading: false,
-		nameProduct: "",
+		message: "",
 	});
 
-	const handleDialog = (message, isLoading, nameProduct) => {
+	// Boîte de dialogue
+	const handleDialog = (isLoading, message) => {
 		setDialog({
-			message,
 			isLoading,
-			nameProduct,
+			message,
 		});
 	};
 
-	const handleDelete = () => {
+	// Function déconnexion
+	const handleDeconnect = () => {
 		handleDialog(
 			true,
-			utilisateur,
-			"Êtes vous sûr de vouloir vous déconnecter ?",
+			`Mr Mme ${utilisateur} êtes vous sûr de vouloir vous déconnecter ? `,
 		);
 	};
 
-	const areUSureDelete = choisir => {
+	const deconnect = choisir => {
 		if (choisir) {
-			handleDialog("", false);
 			localStorage.clear();
+			navigate("/", { replace: true });
+			handleDialog("", true);
 			window.location.reload();
 		} else {
 			handleDialog("", false);
 		}
 	};
+
 	return (
 		<div className="header">
 			<Link to="/panier">Panier</Link>
@@ -60,7 +61,7 @@ const HeadersAuth = () => {
 			{utilisateur && utilisateur.length ? (
 				<div className="header-addItem">
 					<h3>{utilisateur}</h3>
-					<button onClick={handleDelete}>
+					<button onClick={handleDeconnect}>
 						<i className="fas fa-power-off" />
 					</button>
 				</div>
@@ -70,7 +71,7 @@ const HeadersAuth = () => {
 				</h2>
 			)}
 			{dialog.isLoading && (
-				<Dialog nameProduct={dialog.nameProduct} onDialog={areUSureDelete} />
+				<ModalDeconnect message={dialog.message} onDialog={deconnect} />
 			)}
 		</div>
 	);
