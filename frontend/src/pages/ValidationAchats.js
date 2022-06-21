@@ -23,7 +23,7 @@ const ValidationAchats = () => {
 			codeVilleRegex.test(ville) &&
 			codePaysRegex.test(pays)
 		)
-			if (window.confirm(`Voulez vous poursuivre jusqu'au paiement`)) {
+			if (window.confirm(`Voulez vous poursuivre`)) {
 				const expedition = {
 					adresse,
 					ville,
@@ -37,7 +37,11 @@ const ValidationAchats = () => {
 
 				arrayExpedition.push(expedition);
 				localStorage.setItem("expedition", JSON.stringify(arrayExpedition));
-				navigate("/paiement", { replace: true });
+				if (localStorage.ModeLivraison && localStorage.ModePaiement) {
+					navigate("/passercommande", { replace: true });
+				} else {
+					navigate("/livraison", { replace: true });
+				}
 			} else {
 				navigate("/panier", { replace: true });
 			}

@@ -1,0 +1,41 @@
+// Barre de recherche
+.searchBar {
+      input {
+            padding: 0.5rem;
+
+            &::placeholder {
+                  text-align: center;
+                  font-weight: bold;
+            }
+      }
+
+      .search-results {
+            position: fixed;
+            top: 5rem;
+            left: 40%;
+            right: 40%;
+            font-weight: bold;
+      }
+
+      .search-result {
+            border: 0.3rem solid black;
+            border-radius: 0.5rem;
+            transition: 1.5s ease;
+            transform: translateX(0rem);
+            z-index: 5000;
+            background-color: rgb(158, 155, 155);
+      }
+
+      article {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem;
+      }
+
+      img {
+            display: flex;
+            align-items: center;
+            width: 4rem;
+      }
+}

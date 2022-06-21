@@ -16,16 +16,12 @@ const SeConnecter = () => {
 				password,
 			});
 
-			if (response.data.errors) {
-			} else {
-				axios.defaults.headers.common.Authorization = response.data.token;
+			axios.defaults.headers.common.Authorization = response.data.token;
 
-				// localStorage.setItem("id", JSON.stringify(response.data.user.id));
-				localStorage.setItem("bearer", response.data.token);
-				localStorage.setItem("nom", response.data.nom);
-				navigate("/", { replace: true });
-				window.location.reload();
-			}
+			localStorage.setItem("bearer", response.data.token);
+			localStorage.setItem("nom", response.data.nom);
+			navigate("/", { replace: true });
+			window.location.reload();
 		} catch (err) {
 			alert("E-mail ou mot de passe incorrect");
 			window.location.reload();

@@ -4,6 +4,7 @@
         flex-wrap: wrap;
         padding: 1rem;
         justify-content: space-between;
+        position: relative;
 
         .placeorder-info {
                 flex: 3 1 60rem;
@@ -22,9 +23,7 @@
                 justify-content: space-evenly;
         }
 
-        .placeorder-action ul button 
-        // .placeorder-action ul button 
-        {
+        .placeorder-action ul button {
                 color: black;
                 border-radius: 0.5rem;
                 border: 0.1rem solid #c0c0c0;
@@ -43,33 +42,69 @@
 
         .placeorder-info > div h3 {
                 font-style: italic;
-                text-decoration: underline;
+        }
+
+        .placeorder-info > div > button {
+                border-radius: 0.2rem;
+                border: 0.2rem solid #fcfcfc;
+                background-color: #dddbdb;
+                padding: 0.5rem;
+
+                &:hover {
+                        transform: scale(1.05 );
+                }
         }
 
         .placeorder-info > div:nth-child(2)  div {
                 margin-top: 0.5rem;
         }
-
-        .paiement-methode {
-                font-weight: bold;
-                font-size: 1.8rem;
+        
+        .nav1 {
+                position: sticky;
+                // width: 100%;
+                text-align: center;
+                top: 0px;
+                z-index: 0;
+        }
+        
+        .nav2 {
+                position: sticky;
+                top: 35px;
+                z-index: 0;
         }
 
-        .placeorder-action > ul {
-                padding: 0;
-                list-style-type: none;
+        .nav4 {
+                position: sticky;
+                top: 70px;
+                z-index: 0;
+                
         }
-
-        .placeorder-action > ul > li {
+        
+        .nav5 {
+                position: sticky;
+                top: 105px;
+                z-index: 0;
+        }
+        
+        .nav6 {
+                position: sticky;
+                top: 141px;
+                z-index: 0
+        }      
+     
+        .expedition-methode ul {
                 display: flex;
-                justify-content: space-between;
-                margin-bottom: 1rem;
+                justify-content: center;
         }
-
-        .placeorder-action > ul > li:last-child {
-                font-size: 2rem;
-                font-weight: bold;
+        
+        .expedition-methode,
+        .livraison-methode, 
+        .paiement-methode {
+                display: flex;
+                justify-content: center;
                 color: #c04000;
+                font-weight: bold;
+                font-size: 2rem;
         }
 
         .cart-list-container article {
@@ -106,6 +141,36 @@
                 align-items: center;
                 font-size: 2.5rem;
                 text-align: right;
+        }
+
+        
+        .placeorder-action > ul {
+                padding: 0;
+                list-style-type: none;
+        }
+
+        .placeorder-action > ul > li {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+        }
+
+        .placeorder-action > ul > li:last-child {
+                font-size: 2rem;
+                font-weight: bold;
+                color: #c04000;
+        }
+
+        .placeorder-action > div :last-child {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                background-color: $color-9;
+                margin-top: 1rem;
+                padding: 0.8rem;
+                border-radius: 0.5rem;
+                border: none;
+                font-size: 1.5rem;
         }
 }
         

@@ -6,8 +6,9 @@ const Etape = props => {
 		<div className="checkout-steps">
 			<div className={props.step1 ? "active" : ""}>S'inscrire</div>
 			<div className={props.step2 ? "active" : ""}>Adresse Expédition</div>
-			<div className={props.step3 ? "active" : ""}>Paiement</div>
-			<div className={props.step4 ? "active" : ""}>Passer commande</div>
+			<div className={props.step3 ? "active" : ""}>Livraison</div>
+			<div className={props.step4 ? "active" : ""}>Paiement</div>
+			<div className={props.step5 ? "active" : ""}>Passer commande</div>
 		</div>
 	);
 };

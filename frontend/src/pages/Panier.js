@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import data from "../data";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const Panier = () => {
 	const PanierResult = JSON.parse(localStorage.achats);
@@ -67,11 +68,13 @@ const Panier = () => {
 			navigate("/", { replace: true });
 		} else if (localStorage.bearer || localStorage.expedition) {
 			if (localStorage.bearer) {
-				// if (window.confirm(`Voulez poursuivre jusqu'à l'expédition`))
 				navigate("/validationAchats", { replace: true });
 			}
 			if (localStorage.expedition && localStorage.bearer) {
 				navigate("/paiement", { replace: true });
+			}
+			if (localStorage.ModeLivraison) {
+				navigate("/passerCommande", { replace: true });
 			}
 			if (localStorage.ModePaiement) {
 				navigate("/passerCommande", { replace: true });
@@ -94,7 +97,7 @@ const Panier = () => {
 						<div>Prix</div>
 					</li>
 					{achats.length < 0 ? (
-						<h2>Votre Panier est vide</h2>
+						<Loading></Loading>
 					) : (
 						PanierResult.map((x, index) => (
 							<li id="liste" data-id={x.id} data-color={x.couleur} key={index}>

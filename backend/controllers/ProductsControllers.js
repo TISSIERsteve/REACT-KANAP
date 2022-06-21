@@ -1,13 +1,13 @@
 const data = require("../data/data");
 
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = async (req, res, next) => {
 	const products = await data.products;
 	res.json(products);
 
 	// OU
 	// res.send(data.products);
 };
-exports.getOneProduct = async (req, res) => {
+exports.getOneProduct = async (req, res, next) => {
 	// ceci on peut le mettre aussi côter frontend pour récupérer sur produit avec Id
 	const product = await data.products.filter(x => x._id === req.params.id);
 	res.json(product);

@@ -112,6 +112,48 @@ const data = {
 			description:
 				"Canaper reposant idéal pour des longues soirées devant la télèvision en famille ",
 		},
+		{
+			_id: "9",
+			nom: "Ostendiasdqsqfq",
+			image: "/images/kanap08.jpeg",
+			prix: 225,
+			marque: "3 Suisses",
+			evaluation: "4.5",
+			stock: 10,
+			rating: 5,
+			numReviews: 18,
+			couleur: ["Rouge", "Gris", "Rose"],
+			description:
+				"Canaper reposant idéal pour des longues soirées devant la télèvision en famille ",
+		},
+		{
+			_id: "10",
+			nom: "Ost",
+			image: "/images/kanap08.jpeg",
+			prix: 225,
+			marque: "3 Suisses",
+			evaluation: "4.5",
+			stock: 10,
+			rating: 5,
+			numReviews: 18,
+			couleur: ["Rouge", "Gris", "Rose"],
+			description:
+				"Canaper reposant idéal pour des longues soirées devant la télèvision en famille ",
+		},
+		{
+			_id: "11",
+			nom: "Ostendicfdscdfsa",
+			image: "/images/kanap08.jpeg",
+			prix: 225,
+			marque: "3 Suisses",
+			evaluation: "4.5",
+			stock: 10,
+			rating: 5,
+			numReviews: 18,
+			couleur: ["Rouge", "Gris", "Rose"],
+			description:
+				"Canaper reposant idéal pour des longues soirées devant la télèvision en famille ",
+		},
 	],
 };
 module.exports = data;

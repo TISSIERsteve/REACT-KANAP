@@ -4,7 +4,6 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 // Components
-// import Main from "./pages/Main";
 import Panier from "./pages/Panier";
 import Aside from "./pages/Aside";
 import Product from "./pages/Product";
@@ -16,6 +15,8 @@ import Paiement from "./pages/Paiement";
 import ValidationAchats from "./pages/ValidationAchats";
 import Products from "./pages/Products";
 import HeadersAuth from "./components/HeadersAuth";
+import Livraison from "./pages/Livraison";
+import Search from "./components/Search";
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -24,19 +25,20 @@ const App = () => {
 	const [isActive, setisActive] = useState("");
 
 	useEffect(() => {
+		axios.defaults.headers.common.Authorization = localStorage.bearer;
 		axios
 			.get(`${REACT_APP_API_URL}api/products/`)
 			.then(res => {
 				setProducts(res.data);
 			})
-			.catch(err => {
-				console.log(err);
-				if (err.response === "jwt expired") {
-					alert("Votre session est expiré veuillez vous reconnecter");
-					localStorage.clear();
+			.catch(error => {
+				console.log(error);
+				// if (err.response.data.message === "jwt expired") {
+				// 	alert("Votre session est expiré veuillez vous reconnecter");
+				// 	localStorage.clear();
 
-					<Navigate to="/connexion"></Navigate>;
-				}
+				// 	<Navigate to="/connexion"></Navigate>;
+				// }
 			});
 	}, []);
 
@@ -59,6 +61,7 @@ const App = () => {
 
 						<Link to="/">KANAP</Link>
 					</div>
+					<Search></Search>
 					<HeadersAuth></HeadersAuth>
 				</header>
 
@@ -86,6 +89,7 @@ const App = () => {
 						path="/validationAchats"
 						element={<ValidationAchats></ValidationAchats>}
 					></Route>
+					<Route path="/livraison" element={<Livraison></Livraison>}></Route>
 					<Route path="/paiement" element={<Paiement></Paiement>}></Route>
 					<Route
 						path="/passerCommande"
