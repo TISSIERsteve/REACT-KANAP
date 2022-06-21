@@ -13,9 +13,11 @@ app.use(cors());
 // 7. DECLARATION ROUTES
 const userRoutes = require("./routes/UserRoute");
 const productRoutes = require("./routes/Productsroutes");
+const validationRoutes = require("./routes/ValidationCommandeRoutes");
 
 app.use("/api/auth", userRoutes); // Routes pour connexion
 app.use("/api/products", productRoutes); // Route pour produits
+app.use("/api", validationRoutes); // Route pour validation commande
 
 // Et j'exporte mon app
 module.exports = app;

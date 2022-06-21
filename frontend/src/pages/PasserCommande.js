@@ -1,8 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Etape from "../components/Etape";
+const { REACT_APP_API_URL } = process.env;
 
 const PasserCommande = () => {
+	const navigate = useNavigate();
 	const [finalAchat, setFinalAchat] = useState("");
 	const passerCommande = JSON.parse(localStorage.achats);
 	const [expedition, setExpedition] = useState(
@@ -26,10 +29,28 @@ const PasserCommande = () => {
 		});
 	}, []);
 
-	const placeOrderHandler = () => {
-		console.log(
-			`CLIEN ${nom} HAMEAU ${expedition[0].adresse} COMMUNE ${expedition[0].ville} CODE POSTALE ${expedition[0].codePostale} PAYS ${expedition[0].pays} LIVRAISON PAR ${livraison} PAIEMENT ${paiement} NUMERO IDENTIFIANT ${passerCommande[0].id} QUANTITER ${passerCommande[0].quantiter}`,
-		);
+	const placeOrderHandler = e => {
+		e.preventDefault();
+		passerCommande.filter(x => {
+			axios.post(`${REACT_APP_API_URL}api/validation`, {
+				identifiantProduit: x.id,
+				nameProduit: x.nom,
+				quantiter: x.quantiter,
+				couleur: x.couleur,
+
+				paiementMode: `${paiement}`,
+				livraisonMode: `${livraison}`,
+
+				nom: `${nom}`,
+				adresse: expedition[0].adresse,
+				ville: expedition[0].ville,
+				codePostale: expedition[0].codePostale,
+				pays: expedition[0].pays,
+			});
+		});
+		localStorage.clear();
+		navigate("/", { replace: true });
+		window.location.reload();
 	};
 
 	if (localStorage.bearer) {
