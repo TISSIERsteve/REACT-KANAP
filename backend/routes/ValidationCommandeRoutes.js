@@ -1,10 +1,10 @@
 const express = require("express"); //Besoin d'express
 const router = express.Router(); // Avec router designera la méthode
 
-// const userCtrl = require("../controllers/UserController");
+const token = require("../middleware/AuthMiddleware");
 const validationCommandeCtrl = require("../controllers/ValidationCommandeControllers");
 
 // =================== ROUTES =========================
-router.post("/validation", validationCommandeCtrl.orderItem);
+router.post("/validation", token, validationCommandeCtrl.orderItem); // Route validation Commande
 
 module.exports = router;

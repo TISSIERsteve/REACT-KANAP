@@ -23,8 +23,6 @@ exports.signup = (req, res) => {
 
 // Connexion
 exports.login = (req, res) => {
-	// Je récupère l'user qui corespond à la base de donnée
-
 	User.findOne({
 		email: req.body.email,
 	})
@@ -40,7 +38,7 @@ exports.login = (req, res) => {
 				if (valid) {
 					const token = jwt.sign(
 						{
-							expiresIn: 60,
+							expiresIn: Math.floor(Date.now() / 1000) + 60 * 60,
 							userId: user._id,
 						},
 						process.env.JWT_SECRET,
@@ -52,22 +50,6 @@ exports.login = (req, res) => {
 						nom: user.name,
 						email: user.email,
 					});
-					// const token = jwt.sign(
-					// 	{
-					// 		exp: Math.floor(Date.now() / 1000) + 60 * 60,
-					// 		identifiant: user._id,
-					// 	},
-
-					// 	process.env.JWT_SECRET,
-					// );
-
-					// return res.status(200).json({
-					// 	message: "Connecté",
-					// 	token,
-					// 	identifiant: user._id,
-					// 	nom: user.name,
-					// 	email: user.email,
-					// });
 				}
 			});
 		})

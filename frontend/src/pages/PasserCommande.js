@@ -50,7 +50,7 @@ const PasserCommande = () => {
 		});
 		localStorage.clear();
 		navigate("/", { replace: true });
-		window.location.reload();
+		// window.location.reload();
 	};
 
 	if (localStorage.bearer) {

@@ -92,7 +92,7 @@ const Sinscrire = props => {
 						<h2>Inscription</h2>
 					</li>
 					<li>
-						<label htmlFor="name">Nom</label>
+						<label htmlFor="name">Nom / Pseudo</label>
 						<input
 							required
 							type="name"

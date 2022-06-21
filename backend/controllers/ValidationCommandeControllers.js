@@ -1,6 +1,6 @@
 const Item = require("../models/ValidationCommandeModel");
 
-exports.orderItem = (req, res) => {
+exports.orderItem = (req, res, next) => {
 	const item = new Item({
 		article: {
 			identifiantProduit: req.body.identifiantProduit,
